@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nbtetri.c                                          :+:      :+:    :+:   */
+/*   ft_checkParseur.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/24 15:55:43 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/04/07 15:38:13 by jpoujol-         ###   ########.fr       */
+/*   Created: 2017/04/18 14:04:00 by jpoujol-          #+#    #+#             */
+/*   Updated: 2017/04/20 13:57:46 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		nbtetri(char *str)
+void	ft_checkParseur(char ***tetri)
 {
 	int i;
 	int j;
+	int k;
 
 	i = 0;
 	j = 0;
-	while (str[i] != '\0')
+	k = 0;
+	while (tetri[k] != '\0')
 	{
-		while (str[i] != '\n' && str[i + 1] != '\n')
+		while (tetri[k][j] != '\0')
 		{
-			i++;
+			while (tetri[k][j][i] != '\0')
+			{
+				ft_putchar(tetri[k][j][i]);
+				i++;
+			}
+			ft_putchar('\n');
+			j++;
+			i = 0;
 		}
-		i++;
-		j++;
+		ft_putchar('\n');
+		j = 0;
+		k++;
 	}
-	ft_putnbr(j);
-	return (j);
 }

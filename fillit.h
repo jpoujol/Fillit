@@ -8,7 +8,12 @@
 # include <fcntl.h>
 
 char	***ft_parseur(char *str);
-size_t	ft_nbtetri(char *str);
+size_t	ft_nbTetri(char *str);
 char	*ft_readfile(int fd);
+int		ft_checkTetri(char ***tetri, char c);
+void	ft_checkParseur(char ***tetri);
+char	**ft_malloc2d(int nbColone, int nbLigne);
+char	***ft_malloc3d(int nbColone, int nbLigne, int nbTetri);
+char	***ft_memtab(int len);
 
 #endif
