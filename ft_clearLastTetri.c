@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nbtetri.c                                          :+:      :+:    :+:   */
+/*   ft_clearLastTetri.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/24 15:55:43 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/05/02 12:22:56 by jpoujol-         ###   ########.fr       */
+/*   Created: 2017/04/25 13:33:15 by jpoujol-          #+#    #+#             */
+/*   Updated: 2017/04/25 13:44:01 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		nbtetri(char *str)
+char	***ft_clearLastTetri(char ***tetri, char letter)
 {
 	int i;
 	int j;
+	int k;
 
 	i = 0;
 	j = 0;
-	while (str[i] != '\0')
+	k = 0;
+	while (tetri[k])
 	{
-		while (str[i] != '\n' && str[i + 1] != '\n')
+		while (tetri[k][j])
 		{
-			i++;
+			while (tetri[k][j][i])
+			{
+				if (tetri[k][j][i] == letter)
+					tetri[k][j][i] = '.';
+				i++;
+			}
+			i = 0;
+			j++;
 		}
-		i++;
-		j++;
+		j = 0;
+		k++;
 	}
-	return (j);
+	return (tetri);
 }

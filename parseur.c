@@ -6,7 +6,7 @@
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 14:17:46 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/04/20 15:28:10 by jpoujol-         ###   ########.fr       */
+/*   Updated: 2017/05/02 12:57:53 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ size_t		ft_nbTetri(char *str)
 			j++;
 		i++;
 	}
+	j = j + 1;
 		//ft_putnbr(j);
 	return (j);
 }
@@ -64,8 +65,13 @@ int		main(int argc, char **argv)
 	//tetri = ft_memalloc(ft_nbtetri(str) + 1);
 	//*tetri = ft_memalloc(5);
 	tetri = ft_parseur(str);
+	//ft_putnbr(ft_nbTetri(str));
 	//ft_checkParseur(tetri);
-	ft_checkTetri(tetri, '#');
+	//ft_checkTetri(tetri, '#');
+	//ft_putchar('\n');
+	//ft_clearLastTetri(tetri, '#');
+	//ft_checkParseur(tetri);
+	ft_foundPosition(tetri);
 	close(fd);
 	return (0);
 }

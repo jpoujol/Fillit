@@ -15,5 +15,7 @@ void	ft_checkParseur(char ***tetri);
 char	**ft_malloc2d(int nbColone, int nbLigne);
 char	***ft_malloc3d(int nbColone, int nbLigne, int nbTetri);
 char	***ft_memtab(int len);
+char	***ft_clearLastTetri(char ***tetri, char letter);
+int		**ft_foundPosition(char ***tetri);
 
 #endif
