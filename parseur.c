@@ -6,7 +6,7 @@
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 14:17:46 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/05/02 12:57:53 by jpoujol-         ###   ########.fr       */
+/*   Updated: 2017/05/19 16:53:13 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int		main(int argc, char **argv)
 	char *str;
 	char ***tetri;
 	int nbTetri;
+	//int ***position;
+	//int *tab;
+	//char **map;
 
 	if (argc > 2)
 		return (0);
@@ -61,17 +64,22 @@ int		main(int argc, char **argv)
 	//ft_nbtetri(ft_readfile(fd));
 	str = ft_readfile(fd);
 	nbTetri = ft_nbTetri(str);
+	//ft_putnbr(nbTetri);
 	//ft_putstr(str);
-	//tetri = ft_memalloc(ft_nbtetri(str) + 1);
-	//*tetri = ft_memalloc(5);
+	//tetri = ft_memalloc(nbTetri + 1);
 	tetri = ft_parseur(str);
-	//ft_putnbr(ft_nbTetri(str));
-	//ft_checkParseur(tetri);
+	tetri = ft_changeLetter(tetri);
 	//ft_checkTetri(tetri, '#');
 	//ft_putchar('\n');
 	//ft_clearLastTetri(tetri, '#');
 	//ft_checkParseur(tetri);
-	ft_foundPosition(tetri);
+	//position = ft_foundPosition(tetri);
+	//tab = ft_diff(position[0][0][0], position[0][0][1], 0, 0);
+	//map = ft_newMap(4);
+	//ft_printMap(map);
+	//ft_putchar('\n');
+	//map = ft_replaceTetri(map, tetri, tab, 0);
+	//ft_printMap(map);
 	close(fd);
 	return (0);
 }

@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkParseur.c                                  :+:      :+:    :+:   */
+/*   ft_newMap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 14:04:00 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/05/19 15:32:33 by jpoujol-         ###   ########.fr       */
+/*   Created: 2017/05/17 13:50:30 by jpoujol-          #+#    #+#             */
+/*   Updated: 2017/05/19 16:43:56 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_checkParseur(char ***tetri)
+char	**ft_newMap(int len)
 {
+	char **map;
 	int i;
-	int j;
-	int k;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (tetri[k] != '\0')
+	i = -1;
+	while (!(map = (char**)ft_memalloc(sizeof(char*) * len + 1)))
+		continue;
+	map[len + 1] = NULL;
+	while (++i < len)
 	{
-		while (tetri[k][j] != '\0')
-		{
-			while (tetri[k][j][i] != '\0')
-			{
-				ft_putchar(tetri[k][j][i]);
-				i++;
-			}
-			ft_putchar('\n');
-			j++;
-			i = 0;
-		}
-		ft_putchar('\n');
-		j = 0;
-		k++;
+		while (!(map[i] = (char*)ft_strnew(sizeof(len))))
+			continue;
+		ft_memset((void*)map[i], 46, len);
 	}
+	return (map);
 }

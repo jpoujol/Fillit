@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkParseur.c                                  :+:      :+:    :+:   */
+/*   ft_isFree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 14:04:00 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/05/19 15:32:33 by jpoujol-         ###   ########.fr       */
+/*   Created: 2017/05/17 14:02:53 by jpoujol-          #+#    #+#             */
+/*   Updated: 2017/05/18 15:36:24 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_checkParseur(char ***tetri)
+int		ft_isFree(char **map, int x, int y)
 {
-	int i;
-	int j;
-	int k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	while (tetri[k] != '\0')
-	{
-		while (tetri[k][j] != '\0')
-		{
-			while (tetri[k][j][i] != '\0')
-			{
-				ft_putchar(tetri[k][j][i]);
-				i++;
-			}
-			ft_putchar('\n');
-			j++;
-			i = 0;
-		}
-		ft_putchar('\n');
-		j = 0;
-		k++;
-	}
+	if (map[x][y] == '.')
+		return (1);
+	return (0);
 }

@@ -15,7 +15,15 @@ void	ft_checkParseur(char ***tetri);
 char	**ft_malloc2d(int nbColone, int nbLigne);
 char	***ft_malloc3d(int nbColone, int nbLigne, int nbTetri);
 char	***ft_memtab(int len);
-char	***ft_clearLastTetri(char ***tetri, char letter);
-int		**ft_foundPosition(char ***tetri);
+int		***ft_mallocint(int len);
+char	**ft_clearLastTetri(char **map, char letter);
+int		***ft_foundPosition(char ***tetri);
+int		ft_isFree(char **map, int x, int y);
+int		*ft_diff(int x, int y, int i, int j);
+char	**ft_newMap(int len);
+char	**ft_replaceTetri(char **map, char ***tetri, int *diff, int nTetri);
+void	ft_printMap(char **map);
+void	ft_checkPosition(int ***position);
+char	***ft_changeLetter(char ***tetri);
 
 #endif

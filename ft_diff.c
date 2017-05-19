@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkParseur.c                                  :+:      :+:    :+:   */
+/*   ft_diff.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 14:04:00 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/05/19 15:32:33 by jpoujol-         ###   ########.fr       */
+/*   Created: 2017/05/18 13:49:06 by jpoujol-          #+#    #+#             */
+/*   Updated: 2017/05/18 15:25:11 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_checkParseur(char ***tetri)
+int		*ft_diff(int x, int y, int i, int j)
 {
-	int i;
-	int j;
-	int k;
+	int *tab;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (tetri[k] != '\0')
-	{
-		while (tetri[k][j] != '\0')
-		{
-			while (tetri[k][j][i] != '\0')
-			{
-				ft_putchar(tetri[k][j][i]);
-				i++;
-			}
-			ft_putchar('\n');
-			j++;
-			i = 0;
-		}
-		ft_putchar('\n');
-		j = 0;
-		k++;
-	}
+	if (!(tab = (int*)ft_memalloc(sizeof(int) * 3)))
+		return (NULL);
+	tab[2] = (int)NULL;
+	tab[0] = y - j;
+	tab[1] = x - i;
+	return (tab);
 }

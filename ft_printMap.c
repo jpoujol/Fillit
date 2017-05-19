@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkParseur.c                                  :+:      :+:    :+:   */
+/*   ft_printMap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 14:04:00 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/05/19 15:32:33 by jpoujol-         ###   ########.fr       */
+/*   Created: 2017/05/19 13:02:39 by jpoujol-          #+#    #+#             */
+/*   Updated: 2017/05/19 13:05:15 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_checkParseur(char ***tetri)
+void	ft_printMap(char **map)
 {
 	int i;
 	int j;
-	int k;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (tetri[k] != '\0')
+	i = -1;
+	j = -1;
+	while (map[++j])
 	{
-		while (tetri[k][j] != '\0')
+		while (map[j][++i])
 		{
-			while (tetri[k][j][i] != '\0')
-			{
-				ft_putchar(tetri[k][j][i]);
-				i++;
-			}
-			ft_putchar('\n');
-			j++;
-			i = 0;
+			ft_putchar(map[j][i]);
 		}
+		i = -1;
 		ft_putchar('\n');
-		j = 0;
-		k++;
 	}
 }
