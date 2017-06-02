@@ -18,24 +18,21 @@ void	ft_checkParseur(char ***tetri)
 	int j;
 	int k;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (tetri[k] != '\0')
+	i = -1;
+	j = -1;
+	k = -1;
+	while (tetri[++k])
 	{
-		while (tetri[k][j] != '\0')
+		while (tetri[k][++j])
 		{
-			while (tetri[k][j][i] != '\0')
+			while (tetri[k][j][++i])
 			{
 				ft_putchar(tetri[k][j][i]);
-				i++;
 			}
 			ft_putchar('\n');
-			j++;
-			i = 0;
+			i = -1;
 		}
 		ft_putchar('\n');
-		j = 0;
-		k++;
+		j = -1;
 	}
 }

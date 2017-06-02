@@ -6,35 +6,68 @@
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 16:09:41 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/05/19 16:49:43 by jpoujol-         ###   ########.fr       */
+/*   Updated: 2017/05/30 22:34:43 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**ft_replaceTetri(char **map, char ***tetri, int *diff, int nTetri)
+int		ft_replaceTetri(t_fillit *fillit, int *diff, int nTetri)
 {
 	int i;
 	int j;
+	int count;
 
 	i = -1;
-	while (tetri[nTetri][++i])
+	count = 0;
+	if (nTetri > fillit->nbTetri)
+		return (0);
+	while (++i < 4)
 	{
 		j = -1;
-		while (tetri[nTetri][i][++j])
+		while (++j < 4)
 		{
-			if (tetri[nTetri][i][j] == '#')
+			if (fillit->tetri[nTetri][i][j] == ('A' + nTetri))
 			{
-				if (((j - diff[1]) < 0 || (i - diff[0]) < 0) ||
-						ft_isFree(map, i - diff[0], j - diff[1] == 0))
+				ft_putnbr(i);
+				ft_putnbr(j);
+				ft_putchar('\n');
+				if ((j - diff[1]) >= fillit->sizeMap || (i - diff[0]) >= fillit->sizeMap)
 				{
-					ft_clearLastTetri(map, '#');
-					return (map);
+					ft_putendl("okkk");
+					ft_clearLastTetri(fillit, ('A' + nTetri));
+					ft_tabTravel(fillit);
 				}
-				if (ft_isFree(map, i - diff[0], j - diff[1]) == 1)
-					map[i - diff[0]][j - diff[1]] = tetri[nTetri][i][j];
+				if (ft_isFree(fillit, j - diff[1], i - diff[0]) == 1)
+				{
+					ft_putnbr(i);
+					ft_putnbr(j);
+					ft_putchar('\n');
+					ft_putstr("point:");
+					ft_putnbr(count);
+					ft_putchar('\n');
+					ft_putchar('\n');
+					ft_putchar('\n');
+					ft_putstr("coordonnees diff map:");
+					ft_putnbr(diff[0]);
+					ft_putnbr(diff[1]);
+					ft_putchar('\n');
+					ft_putchar('\n');
+					count++;
+					fillit->map[i - diff[0]][j - diff[1]] = fillit->tetri[nTetri][i][j];
+				}
 			}
 		}
 	}
-	return (map);
+	fillit->notCount = 0;
+	ft_printMap(fillit);
+	if (count != 4)
+	{
+		fillit->notCount = 1;
+		ft_putnbr(count);
+		ft_putendl("not the count");
+		ft_clearLastTetri(fillit, ('A' + nTetri));
+		ft_tabTravel(fillit);
+	}
+	return (1);
 }

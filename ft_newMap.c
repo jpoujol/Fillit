@@ -6,7 +6,7 @@
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 13:50:30 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/05/19 16:43:56 by jpoujol-         ###   ########.fr       */
+/*   Updated: 2017/05/29 14:47:18 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**ft_newMap(int len)
 	i = -1;
 	while (!(map = (char**)ft_memalloc(sizeof(char*) * len + 1)))
 		continue;
-	map[len + 1] = NULL;
+	map[len] = NULL;
 	while (++i < len)
 	{
 		while (!(map[i] = (char*)ft_strnew(sizeof(len))))

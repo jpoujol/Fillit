@@ -6,15 +6,15 @@
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 14:02:53 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/05/18 15:36:24 by jpoujol-         ###   ########.fr       */
+/*   Updated: 2017/05/27 01:29:10 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_isFree(char **map, int x, int y)
+int		ft_isFree(t_fillit *fillit, int x, int y)
 {
-	if (map[x][y] == '.')
+	if (fillit->map[y][x] == '.')
 		return (1);
 	return (0);
 }

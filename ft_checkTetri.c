@@ -12,47 +12,48 @@
 
 #include "fillit.h"
 
-int		ft_checkTetri(char ***tetri, char c)
+int		ft_checkTetri(t_fillit *fillit, char c)
 {
-	int i;
-	int j;
-	int k;
 	int nbLink;
-	
-	i = 0;
-	j = 0;
-	k = 0;
+
+	fillit->i = -1;
+	fillit->j = -1;
+	fillit->k = -1;
 	nbLink = 0;
-	while (tetri[k])
+	while (fillit->tetri[++fillit->k])
 	{
-		while (tetri[k][j])
+		while (fillit->tetri[fillit->k][++fillit->j])
 		{
-			while (tetri[k][j][i])
+			while (fillit->tetri[fillit->k][fillit->j][++fillit->i])
 			{
-				if (tetri[k][j][i] == c)
-				{
-					if (tetri[k][j][i + 1] && tetri[k][j][i + 1] == c)
-						nbLink++;
-					if (tetri[k][j][i - 1] && tetri[k][j][i - 1] == c)
-						nbLink++;
-					if (tetri[k][j + 1] && tetri[k][j + 1][i] == c)
-						nbLink++;
-					if (tetri[k][j - 1] && tetri[k][j - 1][i] == c)
-						nbLink++;
-				}
-				i++;
+				nbLink = ft_countLink(fillit, c);
 			}
-			i = 0;
-			j++;
+			fillit->i = -1;
 		}
 		if (!(nbLink == 6) && !(nbLink == 8))
 			return (0);
-		nbLink = 0;
-		j = 0;
-		k++;
+		fillit->j = -1;
 	}
 	return (1);
 }
 
+int		ft_countLink(t_fillit *fillit, char c)
+{
+	int nbLink;
+
+	nbLink = 0;
+	if (fillit->tetri[fillit->k][fillit->j][fillit->i] == c)
+	{
+		if (fillit->tetri[fillit->k][fillit->j][fillit->i + 1] && fillit->tetri[fillit->k][fillit->j][fillit->i + 1] == c)
+			nbLink++;
+		if (fillit->tetri[fillit->k][fillit->j][fillit->i - 1] && fillit->tetri[fillit->k][fillit->j][fillit->i - 1] == c)
+			nbLink++;
+		if (fillit->tetri[fillit->k][fillit->j + 1] && fillit->tetri[fillit->k][fillit->j + 1][fillit->i] == c)
+			nbLink++;
+		if (fillit->tetri[fillit->k][fillit->j - 1] && fillit->tetri[fillit->k][fillit->j - 1][fillit->i] == c)
+			nbLink++;
+	}
+	return (nbLink);
+}
 //VOIR POUR STOCKER NBTETRI DANS STRUCT + CHAR*** + INCREMENTATION LETTRE
 //TEST AVEC TETRI VIDE

@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clearLastTetri.c                                :+:      :+:    :+:   */
+/*   ft_freeMap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 13:33:15 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/05/26 20:48:34 by jpoujol-         ###   ########.fr       */
+/*   Created: 2017/05/23 13:16:27 by jpoujol-          #+#    #+#             */
+/*   Updated: 2017/05/23 13:22:11 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**ft_clearLastTetri(t_fillit *fillit, char letter)
+char	**ft_freeMap(t_fillit *fillit)
 {
-	int i;
-	int j;
-
-	i = -1;
-	j = -1;
-	while (fillit->map[++i])
-	{
-		while (fillit->map[i][++j])
-		{
-			if (fillit->map[i][j] == letter)
-				fillit->map[i][j] = '.';
-		}
-		j = -1;
-	}
+	free(fillit->map);
 	return (fillit->map);
 }
