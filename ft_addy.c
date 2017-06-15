@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clearLastTetri.c                                :+:      :+:    :+:   */
+/*   ft_addy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 13:33:15 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/06/09 03:51:42 by jpoujol-         ###   ########.fr       */
+/*   Created: 2017/06/09 04:13:05 by jpoujol-          #+#    #+#             */
+/*   Updated: 2017/06/09 04:13:57 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**ft_clearLastTetri(char **map, char letter)
+int		**ft_addy(int **coor)
 {
 	int i;
-	int j;
 
 	i = -1;
-	j = -1;
-	while (map[++i])
-	{
-		while (map[++j])
-		{
-			if (map[i][j] == letter)
-				map[i][j] = '.';
-		}
-		j = -1;
-	}
-	return (map);
+	while (++i < 4)
+		coor[1][i] = coor[1][i] + 1;
+	return (coor);
 }

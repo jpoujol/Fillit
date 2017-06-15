@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clearLastTetri.c                                :+:      :+:    :+:   */
+/*   ft_printCoor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 13:33:15 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/06/09 03:51:42 by jpoujol-         ###   ########.fr       */
+/*   Created: 2017/06/15 01:31:30 by jpoujol-          #+#    #+#             */
+/*   Updated: 2017/06/15 01:33:19 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**ft_clearLastTetri(char **map, char letter)
+void	ft_printCoor(int **coor)
 {
 	int i;
 	int j;
 
-	i = -1;
-	j = -1;
-	while (map[++i])
+	i = 0;
+	while (i < 2)
 	{
-		while (map[++j])
+		j = 0;
+		while (j < 4)
 		{
-			if (map[i][j] == letter)
-				map[i][j] = '.';
+			ft_putnbr(coor[i][j]);
+			j++;
 		}
-		j = -1;
+		ft_putchar('\n');
+		i++;
 	}
-	return (map);
 }

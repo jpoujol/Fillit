@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clearLastTetri.c                                :+:      :+:    :+:   */
+/*   ft_tmpCoor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpoujol- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 13:33:15 by jpoujol-          #+#    #+#             */
-/*   Updated: 2017/06/09 03:51:42 by jpoujol-         ###   ########.fr       */
+/*   Created: 2017/06/09 04:43:44 by jpoujol-          #+#    #+#             */
+/*   Updated: 2017/06/09 04:48:02 by jpoujol-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-char	**ft_clearLastTetri(char **map, char letter)
+int		**ft_tmpCoor(int **coor)
 {
+	int		**tmp_coor;
 	int i;
 	int j;
 
 	i = -1;
 	j = -1;
-	while (map[++i])
+	if (!(tmp_coor = (int**)ft_memalloc(sizeof(int*) * 2)))
+		return (0);
+	while (++i < 2)
+		tmp_coor[i] = (int*)ft_memalloc(sizeof(int) * 4);
+	i = -1;
+	while (++i < 2)
 	{
-		while (map[++j])
-		{
-			if (map[i][j] == letter)
-				map[i][j] = '.';
-		}
-		j = -1;
+		while (++j < 4)
+			tmp_coor[i][j] = coor[i][j];
 	}
-	return (map);
+	return (tmp_coor);
 }
